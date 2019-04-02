@@ -8,9 +8,9 @@ const NavBarImage = () => (
     <StaticQuery
         query={graphql`
         query {
-            image: file(relativePath: { eq: "logo_transparent.png" }) {
+            image: file(relativePath: { eq: "logo.png" }) {
                 childImageSharp {
-                    fixed(width: 180, height: 60) {
+                    fixed(width: 130, height: 55) {
                         ...GatsbyImageSharpFixed_withWebp
                     }
                 }
@@ -20,6 +20,7 @@ const NavBarImage = () => (
         render={data => (
             <Img 
                 fixed={data.image.childImageSharp.fixed} 
+                style={{ margin: "10px" }}
             />
         )}
     />
