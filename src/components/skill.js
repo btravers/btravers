@@ -1,5 +1,7 @@
 import React from "react"
 import { MdStar, MdStarBorder, MdStarHalf } from "react-icons/md"
+import range from "lodash/range"
+import map from "lodash/map"
 
 import "./style.scss"
 
@@ -10,11 +12,13 @@ const Star = ({ value }) => {
 }
 
 const Skill = ({ name, mark }) => (
-    <div>
-        {name}
-        <span>
+    <div className="level is-size-4" style={{ margin: "10px" }}>
+        <span className="level-left">
+            {name}
+        </span>
+        <span className="level-right">
             {
-                [0, 1, 2, 3, 4].map(index => (<Star value={mark - index} />))
+                map(range(5), index => (<Star value={mark - index} />))
             }
         </span>
     </div>
