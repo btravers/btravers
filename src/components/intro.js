@@ -1,6 +1,7 @@
 import React from "react"
 import { FaLinkedinIn, FaTwitter, FaGithub, FaAngleDown } from "react-icons/fa"
 
+import "./style.scss"
 import IconButton from "./icon-button"
 
 const Intro = () => (
@@ -16,7 +17,7 @@ const Intro = () => (
                 Web developer
             </p>
         </div>
-        <a class="button is-primary is-outlined is-large is-uppercase" style={{ padding: "0 1.5rem 0 2.4rem" }}>
+        <a className="button is-primary is-outlined is-large is-uppercase" style={{ padding: "0 1.5rem 0 2.4rem" }}>
             Learn more
             <FaAngleDown className="is-size-2" style={{ paddingLeft: "1.6rem" }} />
         </a>

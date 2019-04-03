@@ -1,11 +1,10 @@
 import React from "react"
+import Section from "./section"
 
 const About = () => (
-    <section>
-        <div className="container has-text-centered">
-            <h2 className="is-size-2">About</h2>
-        </div>
-    </section>
+    <Section 
+        title="About"
+    />
 )
 
 export default About

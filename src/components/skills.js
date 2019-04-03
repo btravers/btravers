@@ -1,9 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import orderBy from "lodash/orderBy"
 import map from "lodash/map"
+import filter from "lodash/filter"
 import chunk from "lodash/chunk"
 
+import "./style.scss"
 import Skill from "./skill"
+import SkillFilter from "./skill-filter"
+import Section from "./section"
 
 const skills = [
     {
@@ -32,13 +36,28 @@ const skills = [
         domain: "back"
     },
     {
+        name: "Spring WebFlux",
+        mark: 4,
+        domain: "back"
+    },
+    {
         name: "Node.js",
         mark: 3,
         domain: "back"
     },
     {
         name: "Scala",
-        mark: 3,
+        mark: 2,
+        domain: "back"
+    },
+    {
+        name: "Akka",
+        mark: 2,
+        domain: "back"
+    },
+    {
+        name: "Rust",
+        mark: 1,
         domain: "back"
     },
     {
@@ -83,30 +102,59 @@ const skills = [
     }
 ]
 
-const Skills = () => (
-    <section className="has-background-light">
-        <div className="container has-text-centered">
-            <h2 className="is-size-2">Skills</h2>
-            <div class="columns is-desktop is-8">
-                {
-                    map(
-                        chunk(
-                            map(
-                                orderBy(
-                                    skills, 
-                                    ['mark', 'name'], 
-                                    ['desc', 'asc']
-                                ), 
-                                ({name, mark}) => <Skill name={name} mark={mark} />
-                            ), 
-                            skills.length / 3
-                        ), 
-                        c => <div className="column">{c}</div>
-                    )
-                }
-            </div>
-        </div>
-    </section>
-)
+const Skills = () => {
+    const [filters, setFilters] = useState({
+        data: true,
+        devops: true,
+        back: true,
+        front: true,
+        tool: true
+    })
+
+    const filteredElements = filter(skills, ({ domain }) => filters[domain])
+    const skillElements = map(
+        chunk(
+            map(
+                orderBy(
+                    filteredElements, 
+                    ['mark', 'name'], 
+                    ['desc', 'asc']
+                ), 
+                ({name, mark}) => <Skill name={name} mark={mark} key={name} />
+            ), 
+            filteredElements.length % 3 === 0 ? filteredElements.length / 3 : filteredElements.length / 3 + 1
+        ), 
+        (c, index) => <div className="column" key={index}>{c}</div>
+    )
+    
+    const generateFilter = (label, filter) => (
+        <SkillFilter 
+            label={label}
+            checked={filters[filter]}
+            onChange={() => setFilters({ ...filters, [filter]: !filters[filter] })}
+        />
+    )
+
+    return (
+        <Section 
+            className="has-background-light"
+            title="Skills"
+            content={
+                <div>
+                    <div className="container is-flex" style={{ justifyContent: "space-evenly" }}>
+                        {generateFilter("Backend development", "back")}
+                        {generateFilter("Frontend development", "front")}
+                        {generateFilter("Devops", "devops")}
+                        {generateFilter("Data", "data")}
+                        {generateFilter("Tooling", "tool")}
+                    </div>
+                    <div className="columns is-desktop is-8">
+                        {skillElements}
+                    </div>
+                </div>
+            }
+        />
+    )
+}
 
 export default Skills

@@ -12,13 +12,13 @@ const Star = ({ value }) => {
 }
 
 const Skill = ({ name, mark }) => (
-    <div className="level is-size-4" style={{ margin: "10px" }}>
+    <div className="level is-size-4" style={{ margin: "1rem 3.5rem" }}>
         <span className="level-left">
             {name}
         </span>
         <span className="level-right">
             {
-                map(range(5), index => (<Star value={mark - index} />))
+                map(range(5), index => (<Star value={mark - index} key={index} />))
             }
         </span>
     </div>
