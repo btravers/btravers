@@ -1,7 +1,5 @@
 import React from "react"
 
-import sr from "../services/scrollReveal"
-
 class JobCard extends React.Component {
     constructor(props) {
         super(props)
@@ -9,14 +7,16 @@ class JobCard extends React.Component {
     }
 
     componentDidMount() {
-        sr.reveal(
-            this.ref.current,
-            {
-                origin: this.props.isRight ? "right" : "left",
-                distance: "300px",
-                easing: "ease-in-out",
-                duration: 800
-            } 
+        import("../services/scrollReveal").then(sr => 
+            sr.default.reveal(
+                this.ref.current,
+                {
+                    origin: this.props.isRight ? "right" : "left",
+                    distance: "300px",
+                    easing: "ease-in-out",
+                    duration: 800
+                } 
+            )
         )
     }
 
