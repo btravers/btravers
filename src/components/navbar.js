@@ -18,6 +18,7 @@ const NavBar = () => (
                 aria-label="menu" 
                 aria-expanded="false" 
                 data-target="navbar"
+                href="javascript:void(0)"
             >
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>

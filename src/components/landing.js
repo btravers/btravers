@@ -41,7 +41,7 @@ const Landing = () => (
                         width: '100%',
                         height: '100%',
                         background: '#111111', 
-                        opacity: .7 
+                        opacity: .8 
                     }}
                 />
                 <NavBar />

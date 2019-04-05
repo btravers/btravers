@@ -66,6 +66,11 @@ const skills = [
         domain: "tool"
     },
     {
+        name: "Maven",
+        mark: 3,
+        domain: "tool"
+    },
+    {
         name: "Kafka",
         mark: 2,
         domain: "data"

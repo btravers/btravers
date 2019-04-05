@@ -10,11 +10,11 @@ const Intro = () => (
             <p className="is-size-5 has-text-primary">
                 Hi!
             </p>
-            <p className="is-size-1 has-text-weight-bold" style={{ marginBottom: "0.6rem" }}>
+            <h1 className="is-size-1 has-text-weight-bold" style={{ marginBottom: "0.6rem" }}>
                 I'm Benoit Travers.
-            </p>
+            </h1>
             <p className="is-size-4 has-text-white-ter is-uppercase intro-position">
-                Web developer
+                Sofware developer
             </p>
         </div>
         <a className="button is-primary is-outlined is-large is-uppercase" style={{ padding: "0 1.5rem 0 2.4rem" }}>
